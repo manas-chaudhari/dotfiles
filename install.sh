@@ -5,6 +5,8 @@ set -e
 main() {
 	install_homebrew
 	install_brew_packages
+
+	setup_zsh
 	
 	restore_mackup
 }
@@ -25,6 +27,11 @@ function install_brew_packages() {
 	# Install all our dependencies with bundle (See Brewfile)
 	brew tap homebrew/bundle
 	brew bundle
+}
+
+function setup_zsh() {
+	# Make ZSH the default shell environment
+	chsh -s $(which zsh)
 }
 
 function restore_mackup() {
