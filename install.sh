@@ -39,6 +39,7 @@ function setup_zsh() {
 
 function restore_mackup() {
 	symlink $PWD/.mackup.cfg $HOME/.mackup.cfg
+	symlink $PWD/.mackup $HOME/.mackup
 
 	mackup restore
 }
