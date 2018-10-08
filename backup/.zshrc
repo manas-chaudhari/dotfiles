@@ -11,7 +11,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-source $HOME/.bash_profile
+if test -e $HOME/.profile_private; then
+    source $HOME/.profile_private
+fi
+source $HOME/.profile
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/manas/install/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/manas/install/google-cloud-sdk/path.zsh.inc'; fi
