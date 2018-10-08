@@ -3,6 +3,7 @@
 set -e
 
 main() {
+	ask_for_sudo
 	install_homebrew
 	install_brew_packages
 
@@ -12,30 +13,32 @@ main() {
 }
 
 function install_homebrew() {
-	echo "Setting up Homebrew"
-
 	# Check for Homebrew and install if we don't have it
 	if test ! $(which brew); then
-	  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+		echo "Installing Homebrew"
+		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	fi
 }
 
 function install_brew_packages() {
-	# Update Homebrew recipes
-	brew update
+	echo "Installing Brew Packages"
 
 	# Install all our dependencies with bundle (See Brewfile)
-	brew tap homebrew/bundle
 	brew bundle
 }
 
 function setup_zsh() {
-	# Make ZSH the default shell environment
-	chsh -s $(which zsh)
+	echo "Setting up zsh"
+	if grep --quiet zsh <<< "$SHELL"; then
+		echo "zsh already setup"
+	else
+		# Make ZSH the default shell environment
+		chsh -s $(which zsh)
+	fi
 }
 
 function restore_mackup() {
-	symlink .mackup.cfg $HOME/.mackup.cfg
+	symlink $PWD/.mackup.cfg $HOME/.mackup.cfg
 
 	mackup restore
 }
@@ -55,6 +58,19 @@ function symlink() {
 		echo "Symlinking ${point_to} failed."
 		exit 1
 	fi
+}
+
+function ask_for_sudo() {
+    echo "Prompting for sudo password..."
+    if sudo --validate; then
+        # Keep-alive
+        while true; do sudo --non-interactive true; \
+            sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+        echo "Sudo credentials updated."
+    else
+        echo "Obtaining sudo credentials failed."
+        exit 1
+    fi
 }
 
 main

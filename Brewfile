@@ -4,3 +4,4 @@ brew "mackup"
 
 cask "iterm2"
 cask "visual-studio-code"
+cask "zoomus"
