@@ -11,6 +11,8 @@ main() {
 	change_shell_to_zsh
 	
 	restore_mackup
+
+	restore_osx_settings
 }
 
 function install_homebrew() {
@@ -52,6 +54,11 @@ function restore_mackup() {
 	symlink $PWD/.mackup $HOME/.mackup
 
 	mackup restore
+}
+
+function restore_osx_settings() {
+	echo "Restoring OSX settings"
+	./osx.sh
 }
 
 function symlink() {
