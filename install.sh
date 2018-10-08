@@ -7,7 +7,8 @@ main() {
 	install_homebrew
 	install_brew_packages
 
-	setup_zsh
+	install_prezto
+	change_shell_to_zsh
 	
 	restore_mackup
 }
@@ -27,13 +28,22 @@ function install_brew_packages() {
 	brew bundle
 }
 
-function setup_zsh() {
-	echo "Setting up zsh"
+function change_shell_to_zsh() {
+	echo "Changing shell to zsh"
 	if grep --quiet zsh <<< "$SHELL"; then
-		echo "zsh already setup"
+		echo "zsh already default"
 	else
 		# Make ZSH the default shell environment
-		chsh -s $(which zsh)
+		sudo chsh -s $(which zsh)
+	fi
+}
+
+function install_prezto() {
+	echo "Installing Prezto"
+	if test ! -e $HOME/.zprezto; then
+		zsh -c 'git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"'
+	else
+		echo "Prezto already installed"
 	fi
 }
 
