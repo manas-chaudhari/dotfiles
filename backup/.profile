@@ -9,6 +9,9 @@ function compress() {
 export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
 
+# Pip
+export PATH=$PATH:$HOME/Library/Python/2.7/bin
+
 
 # Go
 export GOPATH=$HOME/go

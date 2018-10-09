@@ -7,6 +7,7 @@ main() {
 	install_homebrew
 	install_brew_packages
 
+	install_pip
 	install_prezto
 	change_shell_to_zsh
 	
@@ -38,6 +39,11 @@ function change_shell_to_zsh() {
 		# Make ZSH the default shell environment
 		sudo chsh -s $(which zsh)
 	fi
+}
+
+function install_pip() {
+	echo "Installing pip"
+	sudo easy_install pip
 }
 
 function install_prezto() {
