@@ -1,0 +1,19 @@
+source ~/.vimrc
+
+:let mapleader = "\"
+:nmap gi :action GotoImplementation<CR>
+:nmap ge :action GotoNextError<CR>
+:nmap <leader>df :action ToggleDistractionFreeMode<CR>
+:nmap <leader>o :action RecentFiles<CR>
+:nmap <leader>r :action RenameElement<CR>
+:imap <leader>r <C-o><leader>r
+
+:nmap <leader>f :action IntroduceField<CR>
+:imap <leader>f <C-o><leader>f
+
+:nmap <leader>v :action IntroduceVariable<CR>
+:imap <leader>v <C-o><leader>v
+
+:nmap <leader>m :action ExtractMethod<CR>
+:imap <leader>m <C-o><leader>m
+
