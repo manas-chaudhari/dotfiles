@@ -2,6 +2,10 @@
 
 set -e
 
+# TODO:
+# - Setup VSCode extensions: vim
+# - Setup Android Studio plugin: IdeaVim
+
 main() {
 	ask_for_sudo
 	install_homebrew
