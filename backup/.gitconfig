@@ -12,3 +12,5 @@
 	email = chaudhari.manas@gmail.com
 [commit]
 	template = /Users/manas/.stCommitMsg
+[include]
+	path = /Users/manas/.gitconfig_private
