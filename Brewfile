@@ -11,3 +11,5 @@ cask "zoomus"
 cask "android-studio"
 cask "caffeine"
 cask "java8"
+cask "mplayerx"
+
