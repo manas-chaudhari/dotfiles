@@ -6,6 +6,10 @@ function compress() {
              --data-binary $1 -i https://api.tinify.com/shrink
 }
 
+ssh-tunnel() {
+	ssh -L "$3":localhost:"$2" $1
+}
+
 export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
 
@@ -31,3 +35,6 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH="/usr/local/opt/erlang@18/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/erlang@18/lib"
 
+
+#ErlangInstaller
+export PATH="~/.erlangInstaller/default/bin:$PATH"
