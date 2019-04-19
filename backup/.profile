@@ -37,4 +37,4 @@ export LDFLAGS="-L/usr/local/opt/erlang@18/lib"
 
 
 #ErlangInstaller
-export PATH="~/.erlangInstaller/default/bin:$PATH"
+export PATH=$HOME/.erlangInstaller/default/bin:$PATH
