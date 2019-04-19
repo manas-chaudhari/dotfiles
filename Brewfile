@@ -12,4 +12,4 @@ cask "android-studio"
 cask "caffeine"
 cask "java8"
 cask "mplayerx"
-
+cask "postman"
