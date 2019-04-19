@@ -22,3 +22,8 @@ if [ -f '/Users/manas/install/google-cloud-sdk/path.zsh.inc' ]; then source '/Us
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/manas/install/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/manas/install/google-cloud-sdk/completion.zsh.inc'; fi
 
+# Auto Completion for kubectl
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
+fi
+
